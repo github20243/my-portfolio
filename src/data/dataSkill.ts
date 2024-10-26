@@ -1,7 +1,6 @@
 import js from "../assets/img/java-script-icon-BEBi80IV.png";
 import ts from "../assets/img/type-script-icon-SUXp1_TB.png";
 import css from "../assets/img/css-icon-Bd78bZv-.png";
-import github from "../assets/img/git-hub-C0dGBtV6.png";
 import html from "../assets/img/html-icon-BlnolMeO.png";
 import nodJs from "../assets/img/node-js-icon-JNF-Hs-w.png";
 import React from "../assets/img/react-icon-wwudyVpi.png";
