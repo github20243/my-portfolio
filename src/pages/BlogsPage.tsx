@@ -80,12 +80,14 @@ const StyledContainer = styled(Box)(({ theme }) => ({
   backgroundImage: 'url("https://files.oaiusercontent.com/file-o98CfnDMvRAHimy4mjnplMjN?se=2024-10-26T10%3A34%3A51Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D70815490-5e1e-46e3-aa75-08a54e96a8fa.webp&sig=qMRJDgrv7NtXY80BfdiAQT3Lvf3dpZmSRjBsyFxYrZ0%3D")',
   backgroundSize: 'cover',
   backgroundPosition: 'center',
+  backgroundRepeat: 'no-repeat', // Не повторять фоновое изображение
   [theme.breakpoints.down("sm")]: {
-    backgroundImage: 'url("https://files.oaiusercontent.com/file-o98CfnDMvRAHimy4mjnplMjN?se=2024-10-26T10%3A34%3A51Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D70815490-5e1e-46e3-aa75-08a54e96a8fa.webp&sig=qMRJDgrv7NtXY80BfdiAQT3Lvf3dpZmSRjBsyFxYrZ0%3D")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
+    backgroundImage: 'url("https://files.oaiusercontent.com/file-o98CfnDMvRAHimy4mjnplMjN?se=2024-10-26T10%3A34%3A51Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D70815490-5e1e-46e3-aa75-08a54e96a8fa.webp&sig=qMRJDgrv7NtXY80BfdiAQT3Lvf3dpZmSRjBsyFxYrZ0%3D")', // Здесь можно задать другое изображение для мобильных устройств, если нужно
+    backgroundSize: 'cover', // Убедитесь, что фоновое изображение покрывает весь контейнер
+    backgroundPosition: 'center', // Центрирование изображения
   }
 }));
+
 
 const StyledInfoBox = styled(Box)(({ theme }) => ({
   backgroundColor: '#ffffff',
