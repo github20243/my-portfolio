@@ -16,6 +16,7 @@ import ArticleIcon from "@mui/icons-material/Article";
 
 const Navbar = () => {
 	const [openDropdown, setOpenDropdown] = useState(false);
+	const [openMenu, setOpenMenu] = useState(false);
 
 	const buttons = [
 		{ href: "/", label: "Home", icon: <HomeIcon /> },
@@ -30,34 +31,33 @@ const Navbar = () => {
 		},
 	];
 
-	const toggleDropdown = () => {
-		setOpenDropdown((prev: boolean) => !prev); // Указан тип для параметра prev
-	};
-
-	const [openMenu, setOpenMenu] = useState(false);
-	const toggleMenu = () => {
-		setOpenMenu((prev: boolean) => !prev); // Указан тип для параметра prev
-	};
+	const toggleDropdown = () => setOpenDropdown((prev) => !prev);
+	const toggleMenu = () => setOpenMenu((prev) => !prev);
+	const closeMenu = () => setOpenMenu(false);
 
 	return (
 		<StyledContainer open={openMenu}>
 			<StyledTitle variant="h6">Мое портфолио</StyledTitle>
 			<IconButton
 				onClick={toggleMenu}
-				sx={{ display: { xs: "block", md: "none" } }}>
-				{openMenu ? (
-					<CloseIcon sx={{ color: "#fff" }} />
-				) : (
-					<MenuIcon sx={{ color: "#fff" }} />
-				)}
+				sx={{ display: { xs: "block", md: "none" } }}
+			>
+				{openMenu ? <CloseIcon sx={{ color: "#fff" }} /> : <MenuIcon sx={{ color: "#fff" }} />}
 			</IconButton>
 			<StyledBox open={openMenu}>
-				{buttons.map((button, index) => (
+				{buttons.map((button) => (
 					<div key={button.href}>
 						<StyledButton
 							href={button.href}
-							index={index}
-							onClick={button.hasDropdown ? toggleDropdown : undefined}>
+							onClick={() => {
+								if (button.hasDropdown) {
+									toggleDropdown();
+								}
+								if (button.href === "/about") {
+									closeMenu();
+								}
+							}}
+						>
 							{button.icon}
 							<Typography variant="caption">{button.label}</Typography>
 						</StyledButton>
@@ -85,7 +85,7 @@ const Navbar = () => {
 
 export default Navbar;
 
-const StyledTitle = styled(Typography)(({theme}) => ({
+const StyledTitle = styled(Typography)(({ theme }) => ({
 	color: "#fff",
 	fontSize: "1.5rem",
 	fontWeight: "bold",
@@ -93,7 +93,7 @@ const StyledTitle = styled(Typography)(({theme}) => ({
 	width: "20%",
 	[theme.breakpoints.down("sm")]: {
 		width: "50%",
-    marginLeft: "20px",
+		marginLeft: "20px",
 	},
 }));
 
@@ -101,7 +101,7 @@ const StyledContainer = styled("header")<{ open: boolean }>(({ theme, open }) =>
 	backgroundImage: "url('https://cdn.pixabay.com/photo/2016/12/29/18/44/background-1939128_960_720.jpg')",
 	backgroundSize: "cover",
 	backgroundPosition: "center",
-	backgroundColor: open ? "rgba(0, 0, 0, 0.5)" : "transparent", // Прозрачный фон при открытии
+	backgroundColor: open ? "rgba(0, 0, 0, 0.5)" : "transparent",
 	width: "100%",
 	position: "sticky",
 	top: 0,
@@ -127,7 +127,7 @@ const StyledBox = styled("nav")<{ open: boolean }>(({ theme, open }) => ({
 	top: "80px",
 	left: 0,
 	width: "100%",
-	backgroundColor: "rgba(0, 0, 0, 0.8)", // Полупрозрачный фон для навигации
+	backgroundColor: "rgba(0, 0, 0, 0.8)",
 	padding: "10px 0",
 	borderTop: "1px solid #ddd",
 	[theme.breakpoints.up("md")]: {
@@ -140,21 +140,12 @@ const StyledBox = styled("nav")<{ open: boolean }>(({ theme, open }) => ({
 	},
 }));
 
-
 const getHoverColor = (index: number) => {
-	const colors = [
-		"#FF5733",
-		"#33FF57",
-		"#3357FF",
-		"#FF33A1",
-		"#A133FF",
-		"#FFD700",
-		"#FF4500",
-	];
+	const colors = ["#FF5733", "#33FF57", "#3357FF", "#FF33A1", "#A133FF", "#FFD700", "#FF4500"];
 	return colors[index % colors.length];
 };
 
-const StyledButton = styled(Button)<{ index: number }>(({ index }) => ({
+const StyledButton = styled(Button)<{ index?: number }>(({ index = 0 }) => ({
 	color: "#fff",
 	display: "flex",
 	flexDirection: "column",
