@@ -52,7 +52,7 @@ const Container = styled(Box)(({ theme }) => ({
 	alignItems: "center",
 	minHeight: "100vh",
 	[theme.breakpoints.down("sm")]: {
-		marginTop: "-170px"
+		marginTop: "-140px"
 	}
 }));
 
