@@ -1,11 +1,5 @@
-import {
-	Button,
-	Typography,
-	styled,
-	Collapse,
-	IconButton,
-} from "@mui/material";
-import { useState } from "react";
+import { Button, Typography, styled, Collapse, IconButton } from "@mui/material";
+import { useState, useEffect } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import HomeIcon from "@mui/icons-material/Home";
@@ -23,20 +17,25 @@ const Navbar = () => {
 		{ href: "/about", label: "About", icon: <PersonIcon /> },
 		{ href: "/projects", label: "Projects", icon: <ComputerIcon /> },
 		{ href: "/resume", label: "Resume", icon: <DescriptionIcon /> },
-		{
-			href: "/blogs",
-			label: "Blogs",
-			icon: <ArticleIcon />,
-			hasDropdown: true,
-		},
+		{ href: "/blogs", label: "Blogs", icon: <ArticleIcon />, hasDropdown: true },
 	];
 
 	const toggleDropdown = () => setOpenDropdown((prev) => !prev);
 	const toggleMenu = () => setOpenMenu((prev) => !prev);
 	const closeMenu = () => setOpenMenu(false);
 
+	useEffect(() => {
+		const handleResize = () => {
+			if (window.innerWidth >= 960) {
+				closeMenu();
+			}
+		};
+		window.addEventListener("resize", handleResize);
+		return () => window.removeEventListener("resize", handleResize);
+	}, []);
+
 	return (
-		<StyledContainer open={openMenu}>
+		<StyledContainer>
 			<StyledTitle variant="h6">Мое портфолио</StyledTitle>
 			<IconButton
 				onClick={toggleMenu}
@@ -44,19 +43,24 @@ const Navbar = () => {
 			>
 				{openMenu ? <CloseIcon sx={{ color: "#fff" }} /> : <MenuIcon sx={{ color: "#fff" }} />}
 			</IconButton>
+			<DesktopMenu>
+				{buttons.map((button, index) => (
+					<StyledButton key={button.href} href={button.href} index={index}>
+						{button.icon}
+						<Typography variant="caption">{button.label}</Typography>
+					</StyledButton>
+				))}
+			</DesktopMenu>
 			<StyledBox open={openMenu}>
-				{buttons.map((button) => (
+				{buttons.map((button, index) => (
 					<div key={button.href}>
 						<StyledButton
 							href={button.href}
 							onClick={() => {
-								if (button.hasDropdown) {
-									toggleDropdown();
-								}
-								if (button.href === "/about") {
-									closeMenu();
-								}
+								if (button.hasDropdown) toggleDropdown();
+								closeMenu();
 							}}
+							index={index}
 						>
 							{button.icon}
 							<Typography variant="caption">{button.label}</Typography>
@@ -64,15 +68,9 @@ const Navbar = () => {
 						{button.hasDropdown && (
 							<Collapse in={openDropdown} timeout="auto" unmountOnExit>
 								<StyledDropdown>
-									<StyledDropdownItem onClick={toggleDropdown}>
-										Категория 1
-									</StyledDropdownItem>
-									<StyledDropdownItem onClick={toggleDropdown}>
-										Категория 2
-									</StyledDropdownItem>
-									<StyledDropdownItem onClick={toggleDropdown}>
-										Категория 3
-									</StyledDropdownItem>
+									<StyledDropdownItem onClick={toggleDropdown}>Категория 1</StyledDropdownItem>
+									<StyledDropdownItem onClick={toggleDropdown}>Категория 2</StyledDropdownItem>
+									<StyledDropdownItem onClick={toggleDropdown}>Категория 3</StyledDropdownItem>
 								</StyledDropdown>
 							</Collapse>
 						)}
@@ -97,11 +95,10 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 	},
 }));
 
-const StyledContainer = styled("header")<{ open: boolean }>(({ theme, open }) => ({
+const StyledContainer = styled("header")(({ theme }) => ({
 	backgroundImage: "url('https://cdn.pixabay.com/photo/2016/12/29/18/44/background-1939128_960_720.jpg')",
 	backgroundSize: "cover",
 	backgroundPosition: "center",
-	backgroundColor: open ? "rgba(0, 0, 0, 0.5)" : "transparent",
 	width: "100%",
 	position: "sticky",
 	top: 0,
@@ -118,11 +115,19 @@ const StyledContainer = styled("header")<{ open: boolean }>(({ theme, open }) =>
 	},
 }));
 
+const DesktopMenu = styled("nav")(({ theme }) => ({
+	display: "flex",
+	flexDirection: "row",
+	marginRight: "120px",
+	[theme.breakpoints.down("md")]: {
+		display: "none",
+	},
+}));
+
 const StyledBox = styled("nav")<{ open: boolean }>(({ theme, open }) => ({
 	display: open ? "flex" : "none",
 	flexDirection: "column",
 	alignItems: "center",
-	justifyContent: "center",
 	position: "absolute",
 	top: "80px",
 	left: 0,
@@ -130,13 +135,10 @@ const StyledBox = styled("nav")<{ open: boolean }>(({ theme, open }) => ({
 	backgroundColor: "rgba(0, 0, 0, 0.8)",
 	padding: "10px 0",
 	borderTop: "1px solid #ddd",
-	[theme.breakpoints.up("md")]: {
-		display: "flex",
-		flexDirection: "row",
-		position: "static",
-		backgroundColor: "transparent",
-		padding: 0,
-		borderTop: "none",
+	zIndex: 999,
+	[theme.breakpoints.down("md")]: {
+		top: "50px",
+		position: "fixed",
 	},
 }));
 
@@ -145,10 +147,12 @@ const getHoverColor = (index: number) => {
 	return colors[index % colors.length];
 };
 
-const StyledButton = styled(Button)<{ index?: number }>(({ index = 0 }) => ({
+const StyledButton = styled(Button)<{ index?: number }>(({ theme, index = 0 }) => ({
 	color: "#fff",
 	display: "flex",
 	flexDirection: "column",
+	alignItems: "center",
+	justifyContent: "center",
 	textTransform: "none",
 	position: "relative",
 	transition: "color 0.3s ease, background-color 0.3s ease",
@@ -158,19 +162,8 @@ const StyledButton = styled(Button)<{ index?: number }>(({ index = 0 }) => ({
 		color: getHoverColor(index),
 		backgroundColor: "#222",
 	},
-	"&::after": {
-		content: '""',
-		position: "absolute",
-		bottom: 0,
-		left: 0,
-		right: 0,
-		height: "2px",
-		backgroundColor: "transparent",
-		transition: "background-color 0.3s, width 0.3s",
-		width: "0%",
-	},
-	"&:hover::after": {
-		backgroundColor: getHoverColor(index),
+	[theme.breakpoints.down("sm")]: {
+		marginLeft: "10px",
 		width: "100%",
 	},
 }));

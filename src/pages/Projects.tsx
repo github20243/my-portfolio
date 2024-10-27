@@ -7,7 +7,6 @@ import {
 	Stack,
 } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import ReactPlayer from "react-player";
 import { projectsData } from "../data/projectsData";
 
 const Projects = () => {
@@ -67,14 +66,12 @@ const Projects = () => {
 				</CardContent>
 
 				<StyledVideoContainer>
-					<ReactPlayer
-						url={projectsData.image}
-						playing={true}
-						loop={true}
-						muted={true}
-						width="100%"
-						height="400px"
-						borderRadius="20px"
+					<video
+						src={projectsData.image}
+						autoPlay
+						loop
+						muted
+						style={{ width: "100%", height: "100%", borderRadius: "20px" }}
 					/>
 				</StyledVideoContainer>
 			</StyledCard>
@@ -177,4 +174,4 @@ const StyledStackButton = styled(Stack)(({theme}) => ({
 	[theme.breakpoints.down("sm")]: {
 		marginLeft: "55px"
 	}
-}))
+}));
