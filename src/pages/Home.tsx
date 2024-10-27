@@ -1,4 +1,3 @@
-// src/pages/Home.tsx
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getInfo } from "../store/request/request";
@@ -8,17 +7,6 @@ import { styled } from "@mui/material/styles";
 import { Typography, Box } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
-
-// Интерфейс для элемента данных
-// interface Item {
-// 	id: string;
-// 	name: string;
-// 	description: string;
-// 	titles: string;
-// 	descriptions: string;
-// 	image: string;
-// 	images: string;
-// }
 
 const Home: React.FC = () => {
 	const dispatch = useDispatch();
@@ -33,49 +21,53 @@ const Home: React.FC = () => {
 
 	return (
 		<StyledContainer>
-			{data.map((item, index) => ( // Добавлен индекс в качестве второго параметра
-				<ItemWrapper key={item.id || index}> {/* Убедитесь, что item.id уникален */}
-					<TextContainer>
-						<StyledTitle>{item.name}</StyledTitle>
-						<StyledDescription>{item.description}</StyledDescription>
-						<StyledTitleText>{item.titles}</StyledTitleText>
-						<StyledDescriptionText>{item.descriptions}</StyledDescriptionText>
-						<StyledSocialLinks>
-							<StyledLink
-								href="https://github.com/github20243"
-								target="_blank"
-								rel="noopener noreferrer">
-								<GitHubIcon fontSize="large" style={{ color: "#181717" }} />
-								<Typography
-									variant="body2"
-									style={{ color: "#fff", marginLeft: 8 }}>
-									GitHub
-								</Typography>
-							</StyledLink>
-							<StyledLink
-								href="https://t.me/Nurs_06A"
-								target="_blank"
-								rel="noopener noreferrer">
-								<TelegramIcon fontSize="large" style={{ color: "#0088cc" }} />
-								<Typography
-									variant="body2"
-									style={{ color: "#fff", marginLeft: 8 }}>
-									Telegram
-								</Typography>
-							</StyledLink>
-						</StyledSocialLinks>
-					</TextContainer>
-					<StyledImage src={item.image} alt={item.name} />
-					<StyledAdditionalImage src={item.images} alt={item.titles} />
-				</ItemWrapper>
-			))}
+			{data.map(
+				(
+					item,
+					index 
+				) => (
+					<ItemWrapper key={item.id || index}>
+						{" "}
+						<TextContainer>
+							<StyledTitle>{item.name}</StyledTitle>
+							<StyledDescription>{item.description}</StyledDescription>
+							<StyledTitleText>{item.titles}</StyledTitleText>
+							<StyledDescriptionText>{item.descriptions}</StyledDescriptionText>
+							<StyledSocialLinks>
+								<StyledLink
+									href="https://github.com/github20243"
+									target="_blank"
+									rel="noopener noreferrer">
+									<GitHubIcon fontSize="large" style={{ color: "#181717" }} />
+									<Typography
+										variant="body2"
+										style={{ color: "#fff", marginLeft: 8 }}>
+										GitHub
+									</Typography>
+								</StyledLink>
+								<StyledLink
+									href="https://t.me/Nurs_06A"
+									target="_blank"
+									rel="noopener noreferrer">
+									<TelegramIcon fontSize="large" style={{ color: "#0088cc" }} />
+									<Typography
+										variant="body2"
+										style={{ color: "#fff", marginLeft: 8 }}>
+										Telegram
+									</Typography>
+								</StyledLink>
+							</StyledSocialLinks>
+						</TextContainer>
+						<StyledImage src={item.image} alt={item.name} />
+						<StyledAdditionalImage src={item.images} alt={item.titles} />
+					</ItemWrapper>
+				)
+			)}
 		</StyledContainer>
 	);
 };
 
 export default Home;
-
-// Стилизация компонентов
 
 const StyledContainer = styled(Box)(({ theme }) => ({
 	backgroundColor: "#1a1a1a",
@@ -115,7 +107,7 @@ const TextContainer = styled(Box)(({ theme }) => ({
 	width: "60%",
 	padding: theme.spacing(2),
 	[theme.breakpoints.down("md")]: {
-		width: "100%", // Полная ширина на мобильных устройствах
+		width: "100%", 
 	},
 }));
 
@@ -126,7 +118,7 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 	textTransform: "uppercase",
 	marginBottom: theme.spacing(1),
 	[theme.breakpoints.down("md")]: {
-		fontSize: "2rem", // Меньший заголовок на мобильных устройствах
+		fontSize: "2rem", 
 	},
 }));
 
@@ -137,7 +129,7 @@ const StyledDescription = styled(Typography)(({ theme }) => ({
 	color: "#ccc",
 	marginBottom: theme.spacing(2),
 	[theme.breakpoints.down("md")]: {
-		fontSize: "1rem", // Меньшее описание на мобильных устройствах
+		fontSize: "1rem", 
 	},
 }));
 
@@ -147,7 +139,7 @@ const StyledTitleText = styled(Typography)(({ theme }) => ({
 	color: "#D5006D",
 	marginTop: theme.spacing(2),
 	[theme.breakpoints.down("md")]: {
-		fontSize: "1.25rem", // Меньший заголовок текста на мобильных устройствах
+		fontSize: "1.25rem",
 	},
 }));
 
@@ -157,7 +149,7 @@ const StyledDescriptionText = styled(Typography)(({ theme }) => ({
 	marginTop: theme.spacing(1),
 	textAlign: "left",
 	[theme.breakpoints.down("md")]: {
-		fontSize: "0.875rem", // Меньший текст описания на мобильных устройствах
+		fontSize: "0.875rem", 
 	},
 }));
 
@@ -170,7 +162,7 @@ const StyledImage = styled("img")(({ theme }) => ({
 		transform: "scale(1.05)",
 	},
 	[theme.breakpoints.down("md")]: {
-		maxWidth: "100%", // Полная ширина на мобильных устройствах
+		maxWidth: "100%", 
 	},
 }));
 
@@ -184,7 +176,7 @@ const StyledAdditionalImage = styled("img")(({ theme }) => ({
 		transform: "scale(1.05)",
 	},
 	[theme.breakpoints.down("md")]: {
-		maxWidth: "100%", // Полная ширина на мобильных устройствах
+		maxWidth: "100%", 
 	},
 }));
 
@@ -192,7 +184,7 @@ const StyledSocialLinks = styled(Box)(({ theme }) => ({
 	display: "flex",
 	gap: theme.spacing(4),
 	marginTop: theme.spacing(2),
-	flexWrap: "wrap", // Разрешить обертывание на меньших экранах
+	flexWrap: "wrap", 
 }));
 
 const StyledLink = styled("a")(() => ({

@@ -94,7 +94,7 @@ const StyledContainer = styled(Box)(({ theme }) => ({
 	width: "100%",
 	[theme.breakpoints.down("sm")]: {
 		padding: "20px",
-	}, // Уменьшаем отступы на маленьких экранах
+	},
 }));
 
 const StyledCard = styled(Card)(({ theme }) => ({
@@ -106,7 +106,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
 	marginTop: "40px",
 	boxShadow: "0 0 20px rgba(255, 0, 255, 0.6)",
 	[theme.breakpoints.down("sm")]: {
-		flexDirection: "column", // Вертикальная ориентация на маленьких экранах
+		flexDirection: "column",
 	},
 }));
 
@@ -116,7 +116,6 @@ const StyledStack = styled(Stack)(({ theme }) => ({
 	[theme.breakpoints.down("sm")]: {
 		justifyContent: "center", 
 		alignItems: "center",
-		border: "2px solid yellow"
 	},
 }));
 
@@ -137,7 +136,7 @@ const StyledBox = styled("div")(({ theme }) => ({
 		display: "flex",
 		justifyContent: "center",
 		alignItems: "center",
-		flex: "0 0 100%", // Полная ширина на маленьких экранах
+		flex: "0 0 100%", 
 		marginBottom: "10px", 
 	},
 }));
@@ -166,10 +165,10 @@ const StyledVideoContainer = styled(Box)(({ theme }) => ({
 	borderRadius: "10px",
 	overflow: "hidden",
 	height: "400px",
-	margin: "0 auto", // Центрируем контейнер видео
+	margin: "0 auto",
 	[theme.breakpoints.down("sm")]: {
-		maxWidth: "100%", // Полная ширина на маленьких экранах
-		height: "400px", // Меняем высоту видео на маленьких экранах
+		maxWidth: "100%", 
+		height: "400px",
 		marginTop: "-100px",
 	},
 }));

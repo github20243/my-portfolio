@@ -105,7 +105,7 @@ const StyledCardContainer = styled(Box)(({ theme }) => ({
 const StyledCard = styled(Card)(({ theme }) => ({
   width: '300px',
   borderRadius: '10px',
-  backgroundColor: 'rgba(255, 255, 255, 0.9)', // Light background for the card
+  backgroundColor: 'rgba(255, 255, 255, 0.9)', 
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.15)',
   transition: 'transform 0.2s, box-shadow 0.2s',
   marginBottom: theme.spacing(2),

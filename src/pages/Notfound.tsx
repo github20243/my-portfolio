@@ -98,6 +98,6 @@ const StyledButton = styled(Button)(({ theme }) => ({
 	"&:hover": {
 		backgroundColor: "#ffebee",
 		color: "#ff416c",
-		transform: "scale(1.05)", // Легкое увеличение кнопки при наведении
+		transform: "scale(1.05)", 
 	},
 }));

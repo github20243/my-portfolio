@@ -42,7 +42,7 @@ const Container = styled(Box)(({ theme }) => ({
 	display: "flex",
 	justifyContent: "center",
 	alignItems: "center",
-	minHeight: "100vh", // Занимает всю высоту экрана
+	minHeight: "100vh",
 	[theme.breakpoints.down("sm")]: {
 		border: "2px solid green",
 		marginTop: "-200px"
@@ -53,26 +53,26 @@ const StyledBox = styled("div")(({ theme }) => ({
 	width: "100%",
 	maxWidth: "600px",
 	margin: "0 auto",
-	padding: theme.spacing(2), // Используем spacing из темы
+	padding: theme.spacing(2), 
 	backgroundColor: theme.palette.common.white,
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
 	justifyContent: "space-between",
-	boxShadow: theme.shadows[3], // Используем тени из темы
+	boxShadow: theme.shadows[3], 
 	borderRadius: theme.shape.borderRadius,
 	minHeight: "400px",
 	transition: "transform 0.3s",
 	"&:hover": {
-		transform: "scale(1.02)", // Увеличение при наведении
+		transform: "scale(1.02)", 
 	},
 }));
 
 const Image = styled("img")(() => ({
 	width: "100%",
-	borderRadius: "10px", // Закругленные углы
+	borderRadius: "10px", 
 	marginBottom: "20px",
-	boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", // Тень для изображения
+	boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)", 
 }));
 
 const ButtonContainer = styled(Box)(() => ({
@@ -83,14 +83,13 @@ const ButtonContainer = styled(Box)(() => ({
 	width: "100%",
 }));
 
-// Стили для кнопок
 const DownloadButton = styled(Button)(({ theme }) => ({
-	backgroundColor: theme.palette.primary.main, // Цвет кнопки из темы
+	backgroundColor: theme.palette.primary.main, 
 	color: theme.palette.common.white,
 	padding: theme.spacing(1, 2),
 	borderRadius: theme.shape.borderRadius,
 	"&:hover": {
-		backgroundColor: theme.palette.primary.dark, // Цвет при наведении
+		backgroundColor: theme.palette.primary.dark,
 	},
 }));
 
@@ -100,7 +99,7 @@ const OpenButton = styled(Button)(({ theme }) => ({
 	padding: theme.spacing(1, 2),
 	borderRadius: theme.shape.borderRadius,
 	"&:hover": {
-		backgroundColor: theme.palette.primary.main, // Цвет при наведении
+		backgroundColor: theme.palette.primary.main,
 		color: theme.palette.common.white,
 	},
 }));

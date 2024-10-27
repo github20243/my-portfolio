@@ -85,9 +85,9 @@ const StyledContent = styled(Box)(({ theme }) => ({
 	width: "100%",
 	maxWidth: "1200px",
 	marginBottom: "2rem",
-	flexDirection: "column", // Устанавливаем по умолчанию для мобильных
+	flexDirection: "column",
 	[theme.breakpoints.up("md")]: {
-		flexDirection: "row", // Изменяем направление для настольных устройств
+		flexDirection: "row", 
 	},
 }));
 
@@ -98,7 +98,6 @@ const StyledTextContainer = styled(Box)(({ theme }) => ({
 	maxWidth: "60%",
 	marginBottom: theme.breakpoints.down("sm") ? "1rem" : "0",
 	[theme.breakpoints.down("sm")]: {
-		border: "1px solid red",
 		maxWidth: "1200px",
 	},
 }));
@@ -109,9 +108,9 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 	paddingTop: "10px",
 	[theme.breakpoints.down("sm")]: {
 		fontSize: "2rem",
-		paddingLeft: "0", // Убираем отступ слева для центрирования
+		paddingLeft: "0", 
 		width: "100%",
-		textAlign: "center", // Центрируем текст на мобильных устройствах
+		textAlign: "center",
 	},
 }));
 
@@ -128,7 +127,7 @@ const StyledBodyText = styled(Typography)(({ theme }) => ({
 	fontFamily: "monospace",
 	[theme.breakpoints.down("sm")]: {
 		fontSize: "1rem",
-		textAlign: "center", // Центрируем текст на мобильных устройствах
+		textAlign: "center", 
 	},
 }));
 
@@ -220,7 +219,7 @@ const StyledMotto = styled(Typography)(({ theme }) => ({
 	fontFamily: "monospace",
 	[theme.breakpoints.down("sm")]: {
 		fontSize: "1rem",
-		textAlign: "center", // Центрируем текст на мобильных устройствах
+		textAlign: "center",
 	},
 }));
 
@@ -231,7 +230,7 @@ const StyledVideoContainer = styled(Box)(({ theme }) => ({
 	justifyContent: "flex-end",
 	[theme.breakpoints.down("sm")]: {
 		maxWidth: "100%",
-		justifyContent: "center", // Center video on small screens
+		justifyContent: "center", 
 		marginBottom: "1rem",
 	},
 }));
