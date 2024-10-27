@@ -5,7 +5,7 @@ import blogSlice from "../store/blogSlice/blogSlice"
 const store = configureStore({
 	reducer: {
 		[infoSlice.name]: infoSlice.reducer,
-		[blogSlice.name]: blogSlice.reducer
+		[blogSlice.name]: blogSlice.reducer,
 	},
 });
 

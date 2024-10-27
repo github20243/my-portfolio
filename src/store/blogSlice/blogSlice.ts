@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBlogsInfo } from "../request/request"; // Убедитесь, что этот путь правильный
+import { getBlogsInfo } from "../request/request";
 
 type InfoState = {
   data: any[]; 
@@ -14,7 +14,7 @@ const initialState: InfoState = {
 };
 
 const blogSlice = createSlice({
-  name: "blog", // Изменено с "data" на "blog" для большей ясности
+  name: "blog", 
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -34,4 +34,4 @@ const blogSlice = createSlice({
   },
 });
 
-export default blogSlice// Экспортируем редюсер
+export default blogSlice

@@ -3,6 +3,7 @@ import axios from "axios";
 
 const INFO_GET = import.meta.env.VITE_APP_INFO_PORT;
 const INFO_BLOGS_GET = import.meta.env.VITE_APP_BLOGS_INFO;
+const INFO_PROJECTS_GET = import.meta.env.VITE_APP_PROJECTS_INFO
 
 export const getInfo = createAsyncThunk(
 	"info/getInfo",
@@ -27,3 +28,4 @@ export const getBlogsInfo = createAsyncThunk(
     }
   }
 );
+
