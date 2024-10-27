@@ -5,8 +5,8 @@ import {
 	Card,
 	CardContent,
 	Stack,
+	styled
 } from "@mui/material";
-import { styled } from "@mui/material/styles";
 import { projectsData } from "../data/projectsData";
 
 const Projects = () => {
@@ -24,12 +24,14 @@ const Projects = () => {
 					<StyledAnimeSiteText
 						variant="h5"
 						gutterBottom
-						sx={{ display: "flex", alignItems: "center" }}>
+						sx={{ display: "flex", alignItems: "center" }}
+					>
 						{projectsData.title}{" "}
 						<span
 							role="img"
 							aria-label="frog"
-							style={{ color: "red", marginLeft: "5px" }}>
+							style={{ color: "red", marginLeft: "5px" }}
+						>
 							⚛
 						</span>
 					</StyledAnimeSiteText>
@@ -40,7 +42,8 @@ const Projects = () => {
 					<StyledStack
 						direction="row"
 						spacing={2}
-						sx={{ marginTop: "20px", flexWrap: "wrap" }}>
+						sx={{ marginTop: "20px", flexWrap: "wrap" }}
+					>
 						{projectsData.tags.map((tag, index) => (
 							<StyledBox key={index}>
 								<StyledTag>{tag}</StyledTag>
@@ -53,13 +56,15 @@ const Projects = () => {
 							variant="contained"
 							color="primary"
 							href={projectsData.codeLink}
-							sx={{ marginRight: "20px" }}>
+							sx={{ marginRight: "20px" }}
+						>
 							Код
 						</Button>
 						<Button
 							variant="contained"
 							color="secondary"
-							href={projectsData.demoLink}>
+							href={projectsData.demoLink}
+						>
 							Демонстрация
 						</Button>
 					</StyledStackButton>
@@ -67,12 +72,15 @@ const Projects = () => {
 
 				<StyledVideoContainer>
 					<video
-						src={projectsData.image}
 						autoPlay
 						loop
 						muted
 						style={{ width: "100%", height: "100%", borderRadius: "20px" }}
-					/>
+					>
+						<source src={projectsData.image} type="video/mp4" />
+						{/* Fallback for unsupported video formats */}
+						Your browser does not support the video tag.
+					</video>
 				</StyledVideoContainer>
 			</StyledCard>
 		</StyledContainer>
@@ -152,7 +160,7 @@ const StyledTag = styled(Box)(({ theme }) => ({
 		border: "2px solid blue",
 		marginRight: "50px",
 		width: "140px",
-		height: "30px"
+		height: "30px",
 	},
 }));
 
@@ -170,8 +178,8 @@ const StyledVideoContainer = styled(Box)(({ theme }) => ({
 	},
 }));
 
-const StyledStackButton = styled(Stack)(({theme}) => ({
+const StyledStackButton = styled(Stack)(({ theme }) => ({
 	[theme.breakpoints.down("sm")]: {
-		marginLeft: "55px"
-	}
+		marginLeft: "55px",
+	},
 }));
