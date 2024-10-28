@@ -43,7 +43,7 @@ const BlogsPage = () => {
 					marginBottom: 2,
 					fontFamily: "monospace",
 					textAlign: "center",
-					color: "#333",
+					color: "#fff",
 				}}>
 				Блоги
 			</Typography>
