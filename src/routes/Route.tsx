@@ -10,7 +10,7 @@ import BlogsPage from "../pages/BlogsPage";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <BaseLayout />,  // BaseLayout здесь, не передаем children вручную
+    element: <BaseLayout />,  
     children: [
       {
         path: "/",

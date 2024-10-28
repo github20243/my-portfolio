@@ -1,6 +1,6 @@
 import { Box, Button, CircularProgress, styled } from "@mui/material";
 import { useState } from "react";
-import resumePdf from "../assets/pdf/AbdimalicovNurislam.pdf.pdf"; // исправлено, убрана лишняя .pdf
+import resumePdf from "../assets/pdf/AbdimalicovNurislam.pdf.pdf";
 import resumeImg from "../assets/img/resume.png";
 
 const MyResume = () => {

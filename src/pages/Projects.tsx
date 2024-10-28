@@ -78,7 +78,6 @@ const Projects = () => {
 						style={{ width: "100%", height: "100%", borderRadius: "20px" }}
 					>
 						<source src={projectsData.image} type="video/mp4" />
-						{/* Fallback for unsupported video formats */}
 						Your browser does not support the video tag.
 					</video>
 				</StyledVideoContainer>

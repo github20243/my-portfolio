@@ -21,7 +21,7 @@ export const getBlogsInfo = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await axios.get(INFO_BLOGS_GET);
-      return data; // Возвращаем данные
+      return data;
     } catch (error) {
       return rejectWithValue(error);
     }

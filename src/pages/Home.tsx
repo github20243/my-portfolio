@@ -10,7 +10,7 @@ import TelegramIcon from "@mui/icons-material/Telegram";
 
 const Home: React.FC = () => {
 	const dispatch = useDispatch();
-	const { data = [], isLoading, error } = useAppSelector((state) => state.data); // Типизация состояния
+	const { data = [], isLoading, error } = useAppSelector((state) => state.data); 
 
 	useEffect(() => {
 		dispatch(getInfo() as any);

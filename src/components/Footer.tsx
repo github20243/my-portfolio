@@ -77,7 +77,7 @@ const StyledFooter = styled("footer")(({}) => ({
   textAlign: "center",
   width: "100%",
   boxShadow: "0 -4px 10px rgba(0, 0, 0, 0.2)",
-  position: "relative", // Убедитесь, что футер не фиксируется
+  position: "relative",
   zIndex: 1,
 }));
 
@@ -86,10 +86,10 @@ const StyledTypography = styled(Typography)(({ theme }) => ({
   fontSize: "1rem",
   fontWeight: "400",
   [theme.breakpoints.down("sm")]: {
-    fontSize: "0.9rem", // Уменьшение размера шрифта на мобильных устройствах
+    fontSize: "0.9rem",
   },
   [theme.breakpoints.up("md")]: {
-    fontSize: "1.1rem", // Увеличение размера шрифта на средних устройствах
+    fontSize: "1.1rem",
   },
 }));
 
@@ -98,12 +98,12 @@ const IconContainer = styled("div")(({ theme }) => ({
   justifyContent: "center",
   gap: "30px",
   marginTop: "10px",
-  flexWrap: "wrap", // Позволяет иконкам переноситься на мобильных устройствах
+  flexWrap: "wrap", 
   [theme.breakpoints.down("sm")]: {
-    gap: "15px", // Уменьшение расстояния между иконками на мобильных устройствах
+    gap: "15px", 
   },
   [theme.breakpoints.up("md")]: {
-    gap: "25px", // Увеличение расстояния между иконками на средних устройствах
+    gap: "25px", 
   },
 }));
 
@@ -113,10 +113,10 @@ const IconWithLabel = styled("div")(({ theme }) => ({
   alignItems: "center",
   color: "white",
   [theme.breakpoints.down("sm")]: {
-    gap: "4px", // Уменьшение расстояния между иконкой и текстом на мобильных устройствах
+    gap: "4px", 
   },
   [theme.breakpoints.up("md")]: {
-    gap: "6px", // Увеличение расстояния между иконкой и текстом на средних устройствах
+    gap: "6px", 
   },
 }));
 
