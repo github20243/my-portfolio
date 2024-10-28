@@ -167,5 +167,4 @@ const StyledImage = styled("img")(({ theme }) => ({
 	height: "200px",
 	objectFit: "cover",
 	borderRadius: "10px 10px 0 0",
-	border: `2px solid ${theme.palette.primary.main}`,
 }));
