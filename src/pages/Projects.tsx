@@ -127,7 +127,7 @@ const StyledAnimeSiteText = styled(Typography)(({ theme }) => ({
 	paddingLeft: "430px",
 	paddingTop: "10px",
 	[theme.breakpoints.down("sm")]: {
-		paddingLeft: "120px",
+		paddingLeft: "130px",
 	},
 }));
 
