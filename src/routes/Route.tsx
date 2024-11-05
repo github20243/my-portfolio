@@ -6,41 +6,59 @@ import Notfound from "../pages/Notfound";
 import Projects from "../pages/Projects";
 import Resume from "../pages/Resume";
 import BlogsPage from "../pages/BlogsPage";
+import PageTransition from "../components/PageTransition";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <BaseLayout />,  
+    element: <BaseLayout />,
     children: [
       {
         path: "/",
         element: <Home />,
+        index: true,
       },
       {
         path: "about",
-        element: <About />,
+        element: (
+          <PageTransition>
+            <About />
+          </PageTransition>
+        ),
       },
       {
         path: "projects",
-        element: <Projects/>
+        element: (
+          <PageTransition>
+            <Projects />
+          </PageTransition>
+        ),
       },
       {
         path: "resume",
-        element: <Resume/>
+        element: (
+          <PageTransition>
+            <Resume />
+          </PageTransition>
+        ),
       },
       {
         path: "blogs",
-        element: <BlogsPage/>
+        element: (
+          <PageTransition>
+            <BlogsPage />
+          </PageTransition>
+        ),
       },
       {
         path: "*",
-        element: <Notfound/>
-      }
+        element: <Notfound />,
+      },
     ],
   },
 ]);
 
-const AppRoutes = () => {
+const AppRoutes: React.FC = () => {
   return <RouterProvider router={router} />;
 };
 

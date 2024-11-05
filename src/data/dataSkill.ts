@@ -77,10 +77,7 @@ export const Skills = [
     id: Math.random(),
     img: reactRouter,
   },
-  {
-    id: Math.random(),
-    img: git
-  },
+  
   {
     id: Math.random(),
     img: npm
