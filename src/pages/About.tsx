@@ -2,11 +2,23 @@ import React from "react";
 import { Box, Typography } from "@mui/material";
 import { styled, keyframes } from "@mui/material/styles";
 import { Skills, tools } from "../data/dataSkill";
-import vidio from "../assets/vid/aboutvideo-ABo_mGCM.mp4"
+import vidio from "../assets/vid/aboutvideo-ABo_mGCM.mp4";
+import planetaVidio from "../assets/vid/178501-860033423_medium.mp4";
 
 const About: React.FC = () => {
 	return (
 		<StyledContainer>
+			<VideoContainer>
+				<video
+					src={planetaVidio}
+					controls
+					autoPlay
+					loop
+					muted
+					style={{ width: "100%", height: "100%", objectFit: "cover" }}
+				/>
+			</VideoContainer>
+			<Overlay />
 			<StyledContent>
 				<StyledTextContainer>
 					<StyledTitle>
@@ -27,7 +39,6 @@ const About: React.FC = () => {
 					</StyledMotto>
 					<StyledMotto>С уважением, Нурислам</StyledMotto>
 				</StyledTextContainer>
-
 				<StyledVideoContainer>
 					<video
 						src={vidio}
@@ -38,7 +49,6 @@ const About: React.FC = () => {
 					/>
 				</StyledVideoContainer>
 			</StyledContent>
-
 			<StyledSkillsToolsSection>
 				<StyledSubTitle>Мои навыки</StyledSubTitle>
 				<StyledItemsContainer>
@@ -49,7 +59,6 @@ const About: React.FC = () => {
 					))}
 				</StyledItemsContainer>
 			</StyledSkillsToolsSection>
-
 			<StyledSkillsToolsSection>
 				<StyledSubTitle>Мои инструменты</StyledSubTitle>
 				<StyledItemsContainer>
@@ -66,16 +75,36 @@ const About: React.FC = () => {
 
 export default About;
 
-const StyledContainer = styled(Box)(({}) => ({
+const StyledContainer = styled(Box)(({ theme }) => ({
+	position: "relative",
+	color: "#fff",
+	padding: theme.spacing(0, 4, 4, 4),
+	minHeight: "100vh",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
-	backgroundColor: "#000",
-	color: "#fff",
-	padding: "2rem",
-	minHeight: "100vh",
+	justifyContent: "flex-start",
+	overflow: "hidden",
+}));
+
+const VideoContainer = styled(Box)(({}) => ({
+	position: "absolute",
 	width: "100%",
-	margin: "0 auto",
+	height: "100%",
+	top: 0,
+	left: 0,
+	zIndex: 1,
+}));
+
+const Overlay = styled(Box)(({}) => ({
+	position: "absolute",
+	width: "100%",
+	height: "100%",
+	top: 0,
+	left: 0,
+	backgroundColor: "rgba(0, 0, 0, 0.4)",
+	zIndex: 2,
+	filter: "brightness(0.8)",
 }));
 
 const StyledContent = styled(Box)(({ theme }) => ({
@@ -86,8 +115,10 @@ const StyledContent = styled(Box)(({ theme }) => ({
 	maxWidth: "1200px",
 	marginBottom: "2rem",
 	flexDirection: "column",
+	position: "relative",
+	zIndex: 3,
 	[theme.breakpoints.up("md")]: {
-		flexDirection: "row", 
+		flexDirection: "row",
 	},
 }));
 
@@ -108,7 +139,7 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 	paddingTop: "10px",
 	[theme.breakpoints.down("sm")]: {
 		fontSize: "2rem",
-		paddingLeft: "0", 
+		paddingLeft: "0",
 		width: "100%",
 		textAlign: "center",
 	},
@@ -127,7 +158,7 @@ const StyledBodyText = styled(Typography)(({ theme }) => ({
 	fontFamily: "monospace",
 	[theme.breakpoints.down("sm")]: {
 		fontSize: "1rem",
-		textAlign: "center", 
+		textAlign: "center",
 	},
 }));
 
@@ -149,6 +180,8 @@ const StyledSubTitle = styled(Typography)(({ theme }) => ({
 const StyledSkillsToolsSection = styled(Box)(({}) => ({
 	width: "100%",
 	padding: "20px 0",
+	position: "relative",
+	zIndex: 3,
 }));
 
 const slideIn = keyframes`
@@ -230,7 +263,7 @@ const StyledVideoContainer = styled(Box)(({ theme }) => ({
 	justifyContent: "flex-end",
 	[theme.breakpoints.down("sm")]: {
 		maxWidth: "100%",
-		justifyContent: "center", 
+		justifyContent: "center",
 		marginBottom: "1rem",
 	},
 }));

@@ -6,60 +6,45 @@ import Notfound from "../pages/Notfound";
 import Projects from "../pages/Projects";
 import Resume from "../pages/Resume";
 import BlogsPage from "../pages/BlogsPage";
-import PageTransition from "../components/PageTransition";
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <BaseLayout />,
-    children: [
-      {
-        path: "/",
-        element: <Home />,
-        index: true,
-      },
-      {
-        path: "about",
-        element: (
-          <PageTransition>
-            <About />
-          </PageTransition>
-        ),
-      },
-      {
-        path: "projects",
-        element: (
-          <PageTransition>
-            <Projects />
-          </PageTransition>
-        ),
-      },
-      {
-        path: "resume",
-        element: (
-          <PageTransition>
-            <Resume />
-          </PageTransition>
-        ),
-      },
-      {
-        path: "blogs",
-        element: (
-          <PageTransition>
-            <BlogsPage />
-          </PageTransition>
-        ),
-      },
-      {
-        path: "*",
-        element: <Notfound />,
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <BaseLayout />,
+		children: [
+			{
+				path: "/",
+				element: <Home />,
+				index: true,
+			},
+			{
+				path: "about",
+				element: (
+						<About />
+				),
+			},
+			{
+				path: "projects",
+				element: <Projects />,
+			},
+			{
+				path: "resume",
+				element: <Resume />,
+			},
+			{
+				path: "blogs",
+				element: <BlogsPage />,
+			},
+			{
+				path: "*",
+				element: <Notfound />,
+			},
+		],
+	},
 ]);
 
 const AppRoutes: React.FC = () => {
-  return <RouterProvider router={router} />;
+	return <RouterProvider router={router} />;
 };
 
 export default AppRoutes;

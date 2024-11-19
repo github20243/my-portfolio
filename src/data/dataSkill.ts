@@ -8,7 +8,6 @@ import redux from "../assets/img/redux-icon-R-Mqekd8.png";
 import scss from "../assets/img/scss-icon-DRE2na0r (1).png";
 import vite from "../assets/img/vite-icon-UY3XrBLD.png";
 import mui from "../assets/img/mui-D5Jp6Q_s.png";
-import tailwind from "../assets/img/tailwind-DUxUM1ZB.png";
 import gitHub from "../assets/img/git-hub-C0dGBtV6.png";
 import reactRouter from "../assets/img/react_react_routerai-Cz0G0O_D.png";
 import vsCode from "../assets/img/vs-code-H6dCO1BR.png";
@@ -65,10 +64,7 @@ export const Skills = [
     id: Math.random(),
     img: mui,
   },
-  {
-    id: Math.random(),
-    img: tailwind,
-  },
+  
   {
     id: Math.random(),
     img: gitHub,

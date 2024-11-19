@@ -7,10 +7,11 @@ import { styled } from "@mui/material/styles";
 import { Typography, Box } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import TelegramIcon from "@mui/icons-material/Telegram";
+import vidioGodjo from "../assets/vid/120172-720504774_medium.mp4"
 
 const Home: React.FC = () => {
 	const dispatch = useDispatch();
-	const { data = [], isLoading, error } = useAppSelector((state) => state.data); 
+	const { data = [], isLoading, error } = useAppSelector((state) => state.data);
 
 	useEffect(() => {
 		dispatch(getInfo() as any);
@@ -21,38 +22,33 @@ const Home: React.FC = () => {
 
 	return (
 		<StyledContainer>
-			{data.map(
-				(
-					item,
-					index 
-				) => (
+			<VideoContainer>
+				<video
+					src={vidioGodjo}
+					autoPlay
+					loop
+					muted
+					style={{ width: "100%", height: "100%", objectFit: "cover" }} 
+				/>
+			</VideoContainer>
+			<Overlay>
+				{data.map((item, index) => (
 					<ItemWrapper key={item.id || index}>
-						{" "}
 						<TextContainer>
 							<StyledTitle>{item.name}</StyledTitle>
 							<StyledDescription>{item.description}</StyledDescription>
 							<StyledTitleText>{item.titles}</StyledTitleText>
 							<StyledDescriptionText>{item.descriptions}</StyledDescriptionText>
 							<StyledSocialLinks>
-								<StyledLink
-									href="https://github.com/github20243"
-									target="_blank"
-									rel="noopener noreferrer">
+								<StyledLink href="https://github.com/github20243" target="_blank" rel="noopener noreferrer">
 									<GitHubIcon fontSize="large" style={{ color: "#181717" }} />
-									<Typography
-										variant="body2"
-										style={{ color: "#fff", marginLeft: 8 }}>
+									<Typography variant="body2" style={{ color: "#fff", marginLeft: 8 }}>
 										GitHub
 									</Typography>
 								</StyledLink>
-								<StyledLink
-									href="https://t.me/Nurs_06A"
-									target="_blank"
-									rel="noopener noreferrer">
+								<StyledLink href="https://t.me/Nurs_06A" target="_blank" rel="noopener noreferrer">
 									<TelegramIcon fontSize="large" style={{ color: "#0088cc" }} />
-									<Typography
-										variant="body2"
-										style={{ color: "#fff", marginLeft: 8 }}>
+									<Typography variant="body2" style={{ color: "#fff", marginLeft: 8 }}>
 										Telegram
 									</Typography>
 								</StyledLink>
@@ -61,8 +57,8 @@ const Home: React.FC = () => {
 						<StyledImage src={item.image} alt={item.name} />
 						<StyledAdditionalImage src={item.images} alt={item.titles} />
 					</ItemWrapper>
-				)
-			)}
+				))}
+			</Overlay>
 		</StyledContainer>
 	);
 };
@@ -70,10 +66,29 @@ const Home: React.FC = () => {
 export default Home;
 
 const StyledContainer = styled(Box)(({ theme }) => ({
-	backgroundColor: "#1a1a1a",
+	position: "relative",
 	color: "#fff",
-	padding: theme.spacing(4),
+	padding: theme.spacing(0, 4, 4, 4), 
 	minHeight: "100vh",
+	display: "flex",
+	flexDirection: "column",
+	alignItems: "center",
+	justifyContent: "flex-start",
+	overflow: "hidden",
+}));
+
+
+const VideoContainer = styled(Box)(({  }) => ({
+	position: "absolute",
+	width: "100%",
+	height: "100%",
+	zIndex: 1,
+}));
+
+const Overlay = styled(Box)(({  }) => ({
+	position: "relative",
+	zIndex: 2, 
+	width: "100%",
 	display: "flex",
 	flexDirection: "column",
 	alignItems: "center",
@@ -88,7 +103,7 @@ const ItemWrapper = styled(Box)(({ theme }) => ({
 	width: "100%",
 	maxWidth: "1200px",
 	padding: theme.spacing(2),
-	backgroundColor: "#2a2a2a",
+	backgroundColor: "rgba(42, 42, 42, 0.8)",
 	borderRadius: "8px",
 	boxShadow: "0 4px 12px rgba(0, 0, 0, 0.3)",
 	transition: "transform 0.3s ease",
@@ -107,7 +122,7 @@ const TextContainer = styled(Box)(({ theme }) => ({
 	width: "60%",
 	padding: theme.spacing(2),
 	[theme.breakpoints.down("md")]: {
-		width: "100%", 
+		width: "100%",
 	},
 }));
 
@@ -118,7 +133,7 @@ const StyledTitle = styled(Typography)(({ theme }) => ({
 	textTransform: "uppercase",
 	marginBottom: theme.spacing(1),
 	[theme.breakpoints.down("md")]: {
-		fontSize: "2rem", 
+		fontSize: "2rem",
 	},
 }));
 
@@ -129,7 +144,7 @@ const StyledDescription = styled(Typography)(({ theme }) => ({
 	color: "#ccc",
 	marginBottom: theme.spacing(2),
 	[theme.breakpoints.down("md")]: {
-		fontSize: "1rem", 
+		fontSize: "1rem",
 	},
 }));
 
@@ -149,7 +164,7 @@ const StyledDescriptionText = styled(Typography)(({ theme }) => ({
 	marginTop: theme.spacing(1),
 	textAlign: "left",
 	[theme.breakpoints.down("md")]: {
-		fontSize: "0.875rem", 
+		fontSize: "0.875rem",
 	},
 }));
 
@@ -162,7 +177,7 @@ const StyledImage = styled("img")(({ theme }) => ({
 		transform: "scale(1.05)",
 	},
 	[theme.breakpoints.down("md")]: {
-		maxWidth: "100%", 
+		maxWidth: "100%",
 	},
 }));
 
@@ -176,7 +191,7 @@ const StyledAdditionalImage = styled("img")(({ theme }) => ({
 		transform: "scale(1.05)",
 	},
 	[theme.breakpoints.down("md")]: {
-		maxWidth: "100%", 
+		maxWidth: "100%",
 	},
 }));
 
@@ -184,7 +199,7 @@ const StyledSocialLinks = styled(Box)(({ theme }) => ({
 	display: "flex",
 	gap: theme.spacing(4),
 	marginTop: theme.spacing(2),
-	flexWrap: "wrap", 
+	flexWrap: "wrap",
 }));
 
 const StyledLink = styled("a")(() => ({
