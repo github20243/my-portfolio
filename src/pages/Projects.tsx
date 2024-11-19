@@ -131,7 +131,7 @@ const ContentOverlay = styled(Box)(({}) => ({
     justifyContent: "flex-start",
 }));
 
-const StyledCard = styled(Card)(({ theme }) => ({
+const StyledCard = styled(Card)(({  }) => ({
     display: "flex",
     backgroundColor: "rgba(0, 0, 0, 0.4)",
     color: "#fff",
@@ -191,7 +191,7 @@ const StyledTag = styled(Box)(({ theme }) => ({
     },
 }));
 
-const StyledVideoContainer = styled(Box)(({ theme }) => ({
+const StyledVideoContainer = styled(Box)(({  }) => ({
     width: "100%",
     height: "400px",
     position: "relative",
@@ -199,7 +199,7 @@ const StyledVideoContainer = styled(Box)(({ theme }) => ({
     borderRadius: "20px",
 }));
 
-const StyledInnerVideo = styled(Box)(({ theme }) => ({
+const StyledInnerVideo = styled(Box)(({  }) => ({
     position: "absolute",
     top: 0,
     left: 0,
