@@ -43,7 +43,7 @@ const Footer = () => {
         </IconWithLabel>
         <IconWithLabel>
           <SocialLink
-            href="https://www.instagram.com/yourinstagram/"
+            href="https://www.instagram.com/nurs_996__/?hl=ru"
             target="_blank"
             rel="noopener noreferrer">
             <StyledInstagramIcon fontSize="large" />
@@ -52,7 +52,7 @@ const Footer = () => {
         </IconWithLabel>
         <IconWithLabel>
           <SocialLink
-            href="https://wa.me/yourwhatsapp/"
+            href="https://wa.me/+996706547119/"
             target="_blank"
             rel="noopener noreferrer">
             <StyledWhatsAppIcon fontSize="large" />
@@ -61,7 +61,7 @@ const Footer = () => {
         </IconWithLabel>
         <IconWithLabel>
           <SocialLink
-            href="https://t.me/yourtelegram/"
+            href="https://t.me/Nurs_06A/"
             target="_blank"
             rel="noopener noreferrer">
             <StyledTelegramIcon fontSize="large" />
