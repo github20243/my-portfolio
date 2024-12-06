@@ -36,12 +36,12 @@ export default Spinner;
 const ParticlePlanet: React.FC = () => {
   const particlesRef = useRef<THREE.InstancedMesh>(null);
 
-  // Количество част��ц и радиус планеты
+  // Количество частц и радиус планеты
   const particleCount = 1000; // Увеличиваем количество частиц
   const radius = 2; // Сохраняем радиус планеты на 2
 
   // Позиции частиц на сфере (распределение по поверхности сферы)
-  const particlePositions = Array.from({ length: particleCount }).map((_, index) => {
+  const particlePositions = Array.from({ length: particleCount }).map(() => {
     const phi = Math.acos(2 * Math.random() - 1); // угол от полюса
     const theta = Math.random() * 2 * Math.PI; // угол по экватору
 
