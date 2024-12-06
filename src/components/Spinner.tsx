@@ -36,7 +36,7 @@ export default Spinner;
 const ParticlePlanet: React.FC = () => {
   const particlesRef = useRef<THREE.InstancedMesh>(null);
 
-  // Количество частиц и радиус планеты
+  // Количество част��ц и радиус планеты
   const particleCount = 1000; // Увеличиваем количество частиц
   const radius = 2; // Сохраняем радиус планеты на 2
 
@@ -71,7 +71,7 @@ const ParticlePlanet: React.FC = () => {
   }, []);
 
   return (
-    <instancedMesh ref={particlesRef} args={[null, null, particleCount]}>
+    <instancedMesh ref={particlesRef} args={[new THREE.BufferGeometry(), new THREE.MeshBasicMaterial(), particleCount]}>
       <sphereGeometry args={[0.015, 8, 8]} />  {/* Уменьшаем размер частиц */}
       <meshStandardMaterial color="#ffffff" />
     </instancedMesh>
